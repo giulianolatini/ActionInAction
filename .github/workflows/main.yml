@@ -53,6 +53,10 @@ jobs:
         run: |
           echo "The repository ${{ github.repository }} contains the following files:"
           tree
+      - name: Error and Warning Test
+        run: |
+          echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+          echo "::error file=app.js,line=1,col=5,endColumn=7::Error in app.js"
   job_1:
     runs-on: ubuntu-latest
     steps:
