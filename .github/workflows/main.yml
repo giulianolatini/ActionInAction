@@ -10,7 +10,7 @@ jobs:
     env: 
       location: "World"
     steps:
-      - run: echo "👋 Hello ${{ location }} "
+      - run: echo "👋 Hello ${{ env.location }} "
     
       - name: Checkout
         uses: actions/checkout@v4.1.4
