@@ -57,10 +57,19 @@ jobs:
         run: |
           echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
           echo "::error file=app.js,line=1,col=5,endColumn=7::Error in app.js"
+          
+      - name: Set color
+        id: color-generator
+        run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+        
+      - name: Get color
+        run: echo "${{ steps.color-generator.outputs.SELECTED_COLOR }}"
+
   job_1:
     runs-on: ubuntu-latest
     steps:
-      - run: "echo Job: ${{ github.job }}"
+      - name: display cuttent job
+        run: "echo Job: ${{ github.job }}"
   job_2:
     runs-on: ubuntu-latest
     needs: job_1
