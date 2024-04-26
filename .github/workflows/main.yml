@@ -25,20 +25,20 @@ on:
         type: environment
         required: true
 jobs:
-  job_parallel:
-    strategy:
-      fail-fast: false
-      max-parallel: 3
-      matrix:
-        os_version: [macos-latest, ubuntu-latest]
-        node_version: [12, 14, 16]
-
-    name: My first job
-    runs-on: ${{ matrix.os_version }}
-    steps:
-      - uses: actions/setup-node@v3.6.0
-        with:
-          node-version: ${{ matrix.node_version }}
+#  job_parallel:
+#    strategy:
+#      fail-fast: false
+#      max-parallel: 3
+#      matrix:
+#        os_version: [macos-latest, ubuntu-latest]
+#        node_version: [12, 14, 16]
+#
+#    name: My first job
+#    runs-on: ${{ matrix.os_version }}
+#    steps:
+#      - uses: actions/setup-node@v3.6.0
+#        with:
+#          node-version: ${{ matrix.node_version }}
   myFirstJob:
     runs-on: ubuntu-latest
     env: 
