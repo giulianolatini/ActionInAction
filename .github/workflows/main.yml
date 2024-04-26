@@ -24,37 +24,37 @@ on:
         description: 'Environment to run tests against'
         type: environment
         required: true
-  jobs:
-    myFirstJob:
-      runs-on: ubuntu-latest
-      env: 
-        location: "World"
-      steps:
-        - run: echo "👋 Hello ${{ env.location }} "
-      
-        - name: Checkout
-          uses: actions/checkout@v4.1.4
-          
-        - name: List files in repository
-          run: |
-            echo "The repository ${{ github.repository }} contains the following files:"
-            tree
-    job_1:
-      runs-on: ubuntu-latest
-      steps:
-        - run: "echo Job: ${{ github.job }}"
-    job_2:
+jobs:
+  myFirstJob:
     runs-on: ubuntu-latest
-      needs: job_1
-      steps:
-        - run: "echo Job: ${{ github.job }}"
-    job_3:
-      runs-on: ubuntu-latest
-      needs: job_1
-      steps:
-        - run: "echo Job: ${{ github.job }}"
-    job_4:
-      runs-on: ubuntu-latest
-      needs: [job_2, job_3]
-      steps:
-        - run: "echo Job: ${{ github.job }}"
+    env: 
+      location: "World"
+    steps:
+      - run: echo "👋 Hello ${{ env.location }} "
+    
+      - name: Checkout
+        uses: actions/checkout@v4.1.4
+        
+      - name: List files in repository
+        run: |
+          echo "The repository ${{ github.repository }} contains the following files:"
+          tree
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: "echo Job: ${{ github.job }}"
+  job_2:
+    runs-on: ubuntu-latest
+    needs: job_1
+    steps:
+      - run: "echo Job: ${{ github.job }}"
+  job_3:
+    runs-on: ubuntu-latest
+    needs: job_1
+    steps:
+      - run: "echo Job: ${{ github.job }}"
+  job_4:
+    runs-on: ubuntu-latest
+    needs: [job_2, job_3]
+    steps:
+      - run: "echo Job: ${{ github.job }}"
