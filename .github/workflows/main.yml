@@ -1,0 +1,21 @@
+name: myfirstpipeline
+on: 
+  push:
+    branches: 
+    - main
+  workflow_dispatch:
+jobs:
+  myFirstJob:
+    runs-on: ubuntu-latest
+    env: 
+      location: "World"
+    steps:
+      - run: echo "👋 Hello ${{ location }} "
+    
+      - name: Checkout
+        uses: actions/checkout@v4.1.4
+        
+      - name: List files in repository
+        run: |
+          echo "The repository ${{ github.repository }} contains the following files:"
+          tree
